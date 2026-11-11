@@ -1,608 +1,680 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tri Wahyu Prabowo — AI Engineer, Robotics Developer, and Marine Conservation Technology enthusiast.">
-  <title>Tri Wahyu Prabowo | AI × Robotics × Ocean Conservation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071521">
+  <meta name="description" content="Tri Wahyu Prabowo builds computer vision models and underwater robotics for marine conservation, working alongside coastal communities in Les Village, Bali and exploring multimodal AI.">
+  <meta name="author" content="Tri Wahyu Prabowo">
+  <link rel="canonical" href="https://triwahyupra.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://triwahyupra.github.io/">
+  <meta property="og:title" content="Tri Wahyu Prabowo | AI, Robotics & Community-Centered Ocean Technology">
+  <meta property="og:description" content="Building AI models and underwater technology with the people protecting our ocean.">
+  <meta property="og:image" content="https://triwahyupra.github.io/asssets/Wahyu%20with%20Robot.png">
+  <meta property="og:image:alt" content="Wahyu working with an underwater robot">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Tri Wahyu Prabowo | AI × Robotics × Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    /* ============================================================
+       PORTFOLIO STYLE GUIDE — EDIT COLOR VARIABLES HERE
+       A single-file, dependency-free GitHub Pages website.
+       All project/community descriptions are editable in the HTML.
+       Existing GitHub image folder is deliberately called "asssets".
+       ============================================================ */
     :root {
-      --bg: #f5f7f4;
-      --surface: #ffffff;
-      --text: #10231f;
-      --muted: #64736e;
-      --line: #dfe6e2;
-      --accent: #0d5c52;
-      --accent-dark: #083f39;
-      --soft: #e8f1ee;
-      --max: 1120px;
-      --radius: 22px;
+      --navy: #071521;
+      --navy-2: #0d2833;
+      --ink: #102833;
+      --teal: #087f7c;
+      --teal-dark: #07635f;
+      --aqua: #5ee0c1;
+      --paper: #f5f6f1;
+      --soft: #eaf0e9;
+      --white: #ffffff;
+      --muted: #577070;
+      --line: #c9d7d0;
+      --radius: 16px;
+      --wrap: 1220px;
+      --shadow: 0 22px 65px rgba(10, 43, 48, .12);
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Ubuntu, system-ui, sans-serif; line-height: 1.6; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; }
+    :focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; }
+    ::selection { background: var(--aqua); color: var(--navy); }
+    .skip-link { position: absolute; left: 1rem; top: -100px; z-index: 100; background: var(--aqua); color: var(--navy); padding: .6rem 1rem; }
+    .skip-link:focus { top: .8rem; }
+    .container { width: min(var(--wrap), calc(100% - 9vw)); margin-inline: auto; }
+    .section { padding-block: clamp(76px, 9vw, 135px); }
+    .section.soft { background: var(--soft); }
+    .eyebrow, .kicker, .section-index { text-transform: uppercase; letter-spacing: .17em; font-size: .72rem; font-weight: 700; }
+    .eyebrow { color: var(--aqua); }
+    .section-index { color: var(--teal); display: inline-flex; gap: 15px; align-items: center; margin: 0 0 22px; }
+    .section-index::after { content: ""; height: 1px; width: 34px; background: currentColor; opacity: .5; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.07; letter-spacing: -.045em; }
+    h2 { font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 500; margin-bottom: 25px; }
+    h2 em, h3 em { font-style: normal; color: var(--teal); }
+    h3 { font-size: clamp(1.4rem, 2.1vw, 1.9rem); font-weight: 500; }
+    p { line-height: 1.75; }
+    .muted { color: var(--muted); }
+    .lead { font-size: clamp(1.08rem, 1.7vw, 1.35rem); line-height: 1.55; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 42px; margin-bottom: 48px; }
+    .section-heading h2 { max-width: 800px; margin-bottom: 0; }
+    .section-heading > p { max-width: 335px; margin-bottom: 3px; color: var(--muted); font-size: .94rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 49px; padding: 12px 21px; background: var(--aqua); color: var(--navy); text-decoration: none; font-size: .88rem; font-weight: 700; border: 1px solid transparent; border-radius: 4px; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-3px); background: #86f0d3; }
+    .button.ghost { background: transparent; border-color: rgba(220, 255, 245, .45); color: var(--paper); }
+    .button.ghost:hover { background: rgba(255,255,255,.07); }
+    .button.dark { background: var(--navy); color: var(--white); }
+    .button.dark:hover { background: var(--teal-dark); }
+    .inline-link { color: var(--teal-dark); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { font-size: .73rem; color: var(--teal-dark); border: 1px solid var(--line); border-radius: 100px; padding: 5px 11px; line-height: 1.3; }
+    .tag.light { border-color: rgba(94,224,193,.35); color: #b6f3df; }
+    .status { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; color: var(--teal-dark); font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; }
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #20ab85; }
+    .status.planned { color: #796334; }
+    .status.planned::before { background: #b69247; }
+    /* Header */
+    .header { position: sticky; top: 0; z-index: 30; min-height: 76px; background: rgba(245,246,241,.97); border-bottom: 1px solid rgba(32,82,77,.1); backdrop-filter: blur(14px); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; text-decoration: none; font-size: .85rem; font-weight: 700; line-height: 1.1; }
+    .brand-mark { width: 38px; height: 38px; background: var(--navy); color: var(--aqua); border-radius: 50%; display: grid; place-items: center; letter-spacing: -.05em; }
+    .brand small { color: var(--teal); font-size: .72rem; }
+    .nav { display: flex; align-items: center; gap: clamp(12px, 1.6vw, 25px); }
+    .nav a { font-size: .79rem; text-decoration: none; white-space: nowrap; transition: color .2s; }
+    .nav a:hover { color: var(--teal); }
+    .nav .nav-cta { padding: 9px 13px; border-radius: 4px; background: var(--navy); color: white; }
+    .nav .nav-cta:hover { background: var(--teal-dark); color: white; }
+    .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: transparent; height: 42px; width: 46px; cursor: pointer; font-size: 1.35rem; }
+    /* Hero */
+    .hero { position: relative; min-height: min(805px, calc(100svh - 76px)); padding-block: clamp(78px, 8vw, 124px); background: var(--navy); color: var(--paper); overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 49.7%, rgba(94,224,193,.05) 50%, transparent 50.3%), linear-gradient(0deg,transparent 49.7%,rgba(94,224,193,.05) 50%,transparent 50.3%); background-size: 102px 102px; opacity: .75; pointer-events: none; }
+    .hero::after { content: ""; position: absolute; border: 1px solid rgba(94,224,193,.17); width: 680px; height: 680px; border-radius: 50%; right: -350px; top: -430px; pointer-events: none; }
+    .hero-layout { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: clamp(38px, 6vw, 110px); }
+    .hero h1 { font-weight: 500; font-size: clamp(3rem, 5.65vw, 6.2rem); letter-spacing: -.06em; line-height: 1.01; margin: 25px 0 28px; }
+    .hero h1 em { display: block; font-style: normal; color: var(--aqua); }
+    .hero-desc { color: #bed1cf; max-width: 615px; font-size: clamp(.98rem, 1.25vw, 1.12rem); margin-bottom: 30px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; }
+    .hero-footnote { margin-top: 37px; color: #8caaa7; font-size: .76rem; letter-spacing: .06em; }
+    .hero-photo-wrap { position: relative; max-width: 485px; width: 100%; justify-self: center; }
+    .hero-photo-frame { padding: 12px 12px 45px; background: #183947; border: 1px solid #2d6565; box-shadow: 0 35px 95px rgba(0,0,0,.27); transform: rotate(2deg); }
+    .hero-photo-frame img { width: 100%; aspect-ratio: .91; object-fit: cover; background: #12373e; }
+    .image-caption { display: flex; justify-content: space-between; gap: 10px; color: #c8e7dc; font-size: .65rem; text-transform: uppercase; letter-spacing: .12em; padding: 15px 8px 0; }
+    .hero-stamp { position: absolute; bottom: 13%; left: -38px; border: 1px solid rgba(94,224,193,.5); border-radius: 50%; width: 96px; aspect-ratio: 1; display: grid; place-items: center; text-align: center; color: var(--aqua); font-size: .65rem; line-height: 1.4; background: #071d27; transform: rotate(-9deg); }
+    /* Proof band */
+    .proof-band { background: #dbece4; border-bottom: 1px solid var(--line); }
+    .proof-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+    .proof { padding: 24px 28px; border-right: 1px solid #bbd6cc; display: flex; align-items: center; gap: 16px; }
+    .proof:first-child { padding-left: 0; }
+    .proof:last-child { border: 0; }
+    .proof strong { font-size: clamp(1.8rem, 2.5vw, 2.6rem); font-weight: 500; letter-spacing: -.05em; color: var(--teal-dark); line-height: 1; }
+    .proof span { font-size: .77rem; line-height: 1.45; color: #355b57; }
+    /* About */
+    .about-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(34px, 11vw, 140px); }
+    .about-grid h2 { max-width: 520px; }
+    .about-main { padding-top: 39px; }
+    .about-main p:not(.lead) { color: var(--muted); }
+    .field-loop { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 9px; align-items: center; }
+    .field-loop span { font-size: .75rem; color: var(--teal-dark); font-weight: 700; }
+    .field-loop b { color: #91b3aa; font-size: .85rem; }
+    /* Expertise */
+    .expertise-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 17px; }
+    .expertise-card { min-height: 346px; padding: 28px; background: var(--navy); color: white; display: flex; flex-direction: column; }
+    .expertise-card:nth-child(2) { background: #0b4850; }
+    .expertise-card:nth-child(3) { background: #0b6864; }
+    .expertise-card .card-no { font-size: .72rem; letter-spacing: .12em; color: var(--aqua); }
+    .expertise-card .card-symbol { font-size: 3.1rem; align-self: end; font-weight: 400; color: var(--aqua); line-height: 1; }
+    .expertise-card h3 { margin: auto 0 12px; padding-top: 45px; max-width: 250px; }
+    .expertise-card p { color: #c4d7d3; font-size: .86rem; margin-bottom: 24px; }
+    .expertise-card .tag { font-size: .67rem; }
+    /* AI build process */
+    .ai-workflow { margin-top: 40px; background: #fff; border: 1px solid var(--line); padding: clamp(22px, 4vw, 39px); }
+    .ai-workflow-header { display: flex; justify-content: space-between; align-items: start; gap: 25px; margin-bottom: 25px; }
+    .ai-workflow h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .ai-workflow-header p { color: var(--muted); font-size: .85rem; margin-bottom: 0; max-width: 540px; }
+    .workflow-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .step { border-top: 2px solid #a6cfc5; padding-top: 15px; }
+    .step b { font-size: .71rem; color: var(--teal); }
+    .step strong { display: block; margin: 9px 0 5px; font-size: .88rem; line-height: 1.35; }
+    .step p { font-size: .76rem; color: var(--muted); line-height: 1.5; margin: 0; }
+    /* Projects */
+    .projects-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }
+    .project-card { min-width: 0; display: flex; flex-direction: column; }
+    .project-photo { position: relative; aspect-ratio: 1.24; background: #0d3440; overflow: hidden; }
+    .project-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s; }
+    .project-card:hover .project-photo img { transform: scale(1.045); }
+    .project-photo .photo-id { position: absolute; left: 14px; top: 12px; padding: 3px 7px; color: white; background: rgba(7,21,33,.65); font-size: .7rem; }
+    .project-body { padding: 19px 2px 4px; display: flex; flex-direction: column; flex-grow: 1; }
+    .project-body .kicker { font-size: .66rem; color: var(--teal); }
+    .project-body h3 { margin: 9px 0 11px; font-size: 1.45rem; }
+    .project-body p { color: var(--muted); font-size: .85rem; line-height: 1.62; }
+    .project-body .tags { margin-top: auto; padding-bottom: 18px; }
+    .project-link { display: inline-flex; align-items: center; gap: 10px; color: var(--teal-dark); font-size: .83rem; font-weight: 700; text-decoration: none; border-top: 1px solid var(--line); padding-top: 15px; }
+    .project-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    /* Native case-study accordion; cards link to actual anchored details */
+    .case-studies { margin-top: 56px; }
+    .case-studies > h3 { font-size: 1.7rem; margin-bottom: 19px; }
+    .case { background: #fff; border: 1px solid var(--line); margin: 9px 0; scroll-margin-top: 98px; }
+    .case summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 25px; padding: 20px 23px; }
+    .case summary::-webkit-details-marker { display: none; }
+    .case summary strong { font-size: 1.05rem; font-weight: 500; }
+    .case summary small { display: block; font-size: .72rem; color: var(--teal); text-transform: uppercase; letter-spacing: .1em; margin-top: 4px; }
+    .case summary .case-plus { font-size: 1.6rem; color: var(--teal); transition: transform .2s; }
+    .case[open] summary .case-plus { transform: rotate(45deg); }
+    .case-content { border-top: 1px solid var(--line); padding: 23px; display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .case-content h4 { font-size: .84rem; text-transform: uppercase; letter-spacing: .08em; color: var(--teal-dark); margin-bottom: 10px; }
+    .case-content p { color: var(--muted); font-size: .88rem; margin-bottom: 0; }
+    .case-bottom { grid-column: 1/-1; margin-top: 2px; font-size: .8rem; padding: 13px 16px; color: #38524e; background: #eff5ef; }
+    /* Multimodal */
+    .multimodal { background: var(--navy); color: white; overflow: hidden; position: relative; }
+    .multimodal::after { content: ""; position: absolute; width: 620px; height: 620px; border: 1px solid rgba(94,224,193,.13); border-radius: 50%; left: -360px; bottom: -390px; pointer-events: none; }
+    .multimodal .section-index { color: var(--aqua); }
+    .multimodal h2 em { color: var(--aqua); }
+    .multimodal .intro { color: #bbd3cf; max-width: 740px; }
+    .future-label { display: inline-flex; color: #ffe3ae; border: 1px solid rgba(255,227,174,.5); padding: 7px 11px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; margin-bottom: 22px; }
+    .multi-layout { display: grid; grid-template-columns: 1.1fr .9fr; gap: 55px; align-items: center; }
+    .multi-inputs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 11px; margin-top: 30px; }
+    .multi-item { border: 1px solid rgba(132,209,196,.27); background: rgba(255,255,255,.04); min-height: 100px; padding: 19px; }
+    .multi-item strong { display: block; color: #e8f9f3; font-size: .94rem; margin: 7px 0 3px; }
+    .multi-item small { color: #9fb8b3; font-size: .73rem; }
+    .multi-item span { color: var(--aqua); font-size: 1.15rem; }
+    .multi-diagram { border: 1px solid rgba(94,224,193,.25); padding: clamp(18px, 3vw, 32px); background: rgba(14,69,75,.32); }
+    .diagram-caption { color: #95c5b8; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; }
+    .diagram-source { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-top: 23px; }
+    .diagram-source span { border: 1px solid #42766f; padding: 9px 10px; color: #d2eee5; font-size: .75rem; }
+    .diagram-line { width: 1px; height: 35px; background: var(--aqua); margin: 0 auto; position: relative; }
+    .diagram-line::after { content: "⌄"; position: absolute; left: -6px; bottom: -7px; color: var(--aqua); }
+    .diagram-model { padding: 21px 15px; background: var(--aqua); color: var(--navy); text-align: center; font-size: 1.05rem; font-weight: 700; }
+    .diagram-model small { display: block; font-size: .72rem; font-weight: 400; }
+    .diagram-output { padding: 17px; background: rgba(255,255,255,.09); text-align: center; border: 1px solid rgba(94,224,193,.3); font-size: .84rem; }
+    .disclaimer { color: #a2c2bb; font-size: .76rem; margin: 19px 0 0; line-height: 1.6; }
+    /* Les Village */
+    .les-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: clamp(40px, 8vw, 110px); align-items: center; }
+    .les-copy .lead { max-width: 505px; }
+    .les-copy p:not(.lead) { color: var(--muted); }
+    .les-card { background: #0b3039; color: white; padding: clamp(26px, 4vw, 43px); min-height: 460px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .les-card::after { content: ""; position: absolute; height: 300px; width: 300px; border: 1px solid rgba(94,224,193,.25); border-radius: 50%; bottom: -145px; right: -100px; }
+    .les-card .map-kicker { color: var(--aqua); font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; }
+    .les-card h3 { color: var(--paper); font-size: clamp(2.6rem, 4vw, 4rem); letter-spacing: -.06em; margin: 19px 0; }
+    .les-card h3 em { color: var(--aqua); }
+    .les-card .map-subtitle { color: #bfd9d4; max-width: 330px; font-size: .9rem; }
+    .les-activities { display: grid; grid-template-columns: 1fr; gap: 12px; z-index: 1; }
+    .activity { display: grid; grid-template-columns: 25px 1fr; align-items: start; gap: 12px; padding-top: 14px; border-top: 1px solid rgba(94,224,193,.26); }
+    .activity .number { color: var(--aqua); font-size: .75rem; }
+    .activity strong { font-size: .91rem; display: block; }
+    .activity span:last-child { display: block; color: #b5d0ca; font-size: .78rem; margin-top: 2px; }
+    .community-principle { background: var(--soft); border-left: 4px solid var(--teal); padding: 21px 25px; margin-top: 34px; font-size: .98rem; line-height: 1.7; }
+    /* Community tool vision */
+    .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 7vw, 90px); align-items: center; }
+    .tool-notes { display: grid; gap: 10px; margin-top: 29px; }
+    .tool-note { padding: 15px 0 15px 24px; border-left: 2px solid var(--line); }
+    .tool-note strong { font-size: .94rem; }
+    .tool-note p { color: var(--muted); font-size: .85rem; margin: 4px 0 0; }
+    .mockup { border-radius: 12px; background: #fefefe; border: 1px solid #bed7ce; box-shadow: var(--shadow); overflow: hidden; transform: rotate(1deg); }
+    .mockup-bar { background: #09242d; color: white; display: flex; align-items: center; justify-content: space-between; padding: 16px 21px; font-size: .74rem; }
+    .mockup-dots { color: var(--aqua); letter-spacing: .27em; }
+    .mockup-body { padding: clamp(18px, 3vw, 28px); }
+    .mockup-heading { display: flex; justify-content: space-between; gap: 15px; align-items: center; margin-bottom: 17px; }
+    .mockup-heading strong { font-size: 1.14rem; }
+    .mockup-heading span { font-size: .65rem; color: #84692f; background: #fff0c8; padding: 5px 8px; border-radius: 25px; font-weight: 700; }
+    .mockup-upload { border: 2px dashed #9fbfb7; background: #f1f7f2; padding: 29px 19px; text-align: center; border-radius: 8px; color: #446a63; }
+    .mockup-upload .upload-icon { font-size: 1.6rem; color: var(--teal); display: block; margin-bottom: 3px; }
+    .mockup-upload strong { display: block; font-size: .87rem; }
+    .mockup-upload small { font-size: .72rem; }
+    .mockup-table { display: grid; grid-template-columns: 1fr auto; gap: 10px; border-bottom: 1px solid #deebe5; padding: 14px 2px; font-size: .77rem; }
+    .mockup-table b { color: var(--teal-dark); font-weight: 500; }
+    .mockup-foot { background: #eaf3ee; padding: 12px 22px; font-size: .7rem; color: #526d67; }
+    /* Journey */
+    .journey-grid { display: grid; grid-template-columns: 1.25fr .8fr; gap: clamp(28px, 6vw, 95px); }
+    .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 18px; padding: 21px 0; border-top: 1px solid var(--line); }
+    .timeline-item time, .timeline-item .period { font-size: .74rem; color: var(--teal-dark); }
+    .timeline-item h3 { font-size: 1.08rem; margin-bottom: 4px; letter-spacing: -.02em; }
+    .timeline-item .org { color: var(--teal); font-size: .8rem; font-weight: 700; margin-bottom: 8px; }
+    .timeline-item p:last-child { color: var(--muted); font-size: .81rem; margin-bottom: 0; }
+    .recognition { background: var(--navy); color: white; padding: clamp(25px, 3vw, 35px); align-self: start; }
+    .recognition .kicker { color: var(--aqua); margin-bottom: 20px; display: block; }
+    .recognition-item { border-top: 1px solid rgba(94,224,193,.25); padding: 19px 0; }
+    .recognition-item strong { font-size: .88rem; display: block; font-weight: 500; }
+    .recognition-item span { color: #aec6c0; font-size: .76rem; display: block; margin-top: 6px; }
+    /* Contact */
+    .contact { background: var(--navy); color: white; padding: clamp(78px, 10vw, 128px) 0 27px; }
+    .contact .section-index { color: var(--aqua); }
+    .contact h2 { font-size: clamp(2.8rem, 6vw, 5.3rem); max-width: 900px; }
+    .contact h2 em { color: var(--aqua); }
+    .contact .contact-desc { max-width: 690px; color: #b6cfca; margin: 20px 0 29px; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .footer { border-top: 1px solid rgba(94,224,193,.27); margin-top: clamp(67px, 8vw, 110px); padding-top: 23px; display: flex; justify-content: space-between; align-items: start; gap: 24px; }
+    .footer p { margin: 0; color: #8daea7; font-size: .75rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: #c4e1d9; font-size: .78rem; text-decoration: none; }
+    .footer-links a:hover { color: var(--aqua); text-decoration: underline; }
+    /* Subtle motion, progressive enhancement only */
+    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .js .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 1050px) {
+      .menu-toggle { display: block; }
+      .nav { display: none; position: absolute; top: 76px; left: 0; width: 100%; background: var(--paper); padding: 16px 5vw 25px; border-bottom: 1px solid var(--line); box-shadow: 0 12px 20px rgba(6,33,36,.07); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav.open { display: flex; }
+      .nav a { padding: 13px 0; font-size: .95rem; }
+      .nav .nav-cta { text-align: center; margin-top: 10px; }
+      .projects-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .proof { padding-inline: 16px; }
+      .multi-layout { gap: 26px; }
     }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(100% - 40px, var(--max));
-      margin-inline: auto;
+    @media (max-width: 760px) {
+      .container { width: min(var(--wrap), calc(100% - 12vw)); }
+      .section { padding-block: 76px; }
+      .hero { min-height: auto; padding-block: 69px 80px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 56px; }
+      .hero h1 { max-width: 680px; font-size: clamp(2.9rem, 10vw, 5rem); }
+      .hero-photo-wrap { max-width: 465px; }
+      .hero-stamp { left: -23px; }
+      .section-heading { display: block; }
+      .section-heading > p { margin-top: 22px; max-width: 630px; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .proof { border-right: none; border-bottom: 1px solid #bbd6cc; padding: 17px 0; }
+      .proof:first-child { padding-left: 0; }
+      .about-grid, .les-grid, .multi-layout, .tool-grid, .journey-grid { grid-template-columns: 1fr; }
+      .about-main { padding-top: 0; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .expertise-card { min-height: 270px; }
+      .expertise-card h3 { padding-top: 20px; }
+      .workflow-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: 1fr; gap: 37px; }
+      .project-photo { aspect-ratio: 1.5; }
+      .case-content { grid-template-columns: 1fr; }
+      .case-bottom { grid-column: auto; }
+      .les-card { min-height: 430px; }
+      .mockup { transform: none; }
+      .footer { flex-direction: column; }
     }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(245, 247, 244, 0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(223, 230, 226, 0.8);
+    @media (max-width: 440px) {
+      .hero h1 { font-size: 2.8rem; }
+      .hero-actions .button, .contact-actions .button { width: 100%; }
+      .workflow-grid { grid-template-columns: 1fr; }
+      .image-caption { font-size: .56rem; }
+      .hero-stamp { display: none; }
+      .timeline-item { grid-template-columns: 86px 1fr; gap: 11px; }
+      .ai-workflow-header { display: block; }
+      .case summary { padding: 18px 14px; }
+      .case-content { padding: 17px; }
+      .multi-inputs { grid-template-columns: 1fr; }
+      .diagram-source span { font-size: .66rem; }
+      .mockup-heading { display: block; }
+      .mockup-heading span { display: inline-block; margin-top: 8px; }
     }
-
-    .nav-inner {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .hero {
-      min-height: calc(100vh - 72px);
-      display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      align-items: center;
-      gap: 64px;
-      padding: 88px 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: var(--soft);
-      color: var(--accent);
-      font-size: 0.82rem;
-      font-weight: 700;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      max-width: 850px;
-      font-size: clamp(3.2rem, 8vw, 6.7rem);
-      line-height: 0.95;
-      letter-spacing: -0.065em;
-      margin-bottom: 28px;
-    }
-
-    .hero h1 span { color: var(--accent); }
-
-    .hero-copy {
-      max-width: 680px;
-      font-size: 1.18rem;
-      color: var(--muted);
-      margin-bottom: 34px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border: 1px solid var(--text);
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform 0.2s, background 0.2s, color 0.2s;
-    }
-
-    .button:hover { transform: translateY(-2px); }
-
-    .button.primary {
-      background: var(--text);
-      color: white;
-    }
-
-    .button.secondary {
-      background: transparent;
-    }
-
-    .portrait-card {
-      aspect-ratio: 4 / 5;
-      border-radius: 32px;
-      background:
-        linear-gradient(145deg, rgba(13,92,82,.12), rgba(13,92,82,.02)),
-        var(--surface);
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .portrait-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 45%;
-      display: block;
-    }
-
-    section { padding: 100px 0; }
-
-    .section-label {
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      letter-spacing: -0.045em;
-      line-height: 1.05;
-      margin-bottom: 42px;
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 0.7fr 1.3fr;
-      gap: 80px;
-      border-top: 1px solid var(--line);
-    }
-
-    .about-text {
-      max-width: 720px;
-      font-size: 1.2rem;
-      color: var(--muted);
-    }
-
-    .about-text p + p { margin-top: 20px; }
-
-    .focus-grid, .project-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 30px;
-    }
-
-    .card-number {
-      color: var(--muted);
-      font-size: 0.82rem;
-      margin-bottom: 36px;
-    }
-
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      letter-spacing: -0.02em;
-    }
-
-    .card p { color: var(--muted); }
-
-    /* Updated project-card styles for GIFs */
-    .project-card {
-      min-height: 420px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-media {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #f3f5f4;
-    }
-
-    .project-gif {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: opacity 0.25s ease;
-    }
-
-    .gif-default {
-      opacity: 1;
-      z-index: 1;
-    }
-
-    .gif-hover {
-      opacity: 0;
-      z-index: 0;
-    }
-
-    .project-card:hover .gif-default {
-      opacity: 0;
-    }
-
-    .project-card:hover .gif-hover {
-      opacity: 1;
-      z-index: 2;
-    }
-
-    .project-content {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .project-tag {
-      color: var(--accent);
-      font-size: 0.8rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .project-card h3 {
-      font-size: 1.55rem;
-      margin: 10px 0;
-    }
-
-    .project-link {
-      display: inline-block;
-      margin-top: 10px;
-      font-weight: 800;
-    }
-
-    .experience {
-      border-top: 1px solid var(--line);
-    }
-
-    .timeline {
-      border-top: 1px solid var(--line);
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 0.45fr 1fr;
-      gap: 50px;
-      padding: 30px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .timeline-date { color: var(--muted); }
-
-    .timeline-role {
-      font-size: 1.35rem;
-      font-weight: 800;
-    }
-
-    .timeline-company {
-      color: var(--accent);
-      font-weight: 700;
-      margin: 4px 0 10px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      padding: 10px 15px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--surface);
-      color: var(--muted);
-    }
-
-    .contact {
-      background: var(--text);
-      color: white;
-      border-radius: 34px;
-      padding: 70px;
-      margin-bottom: 50px;
-    }
-
-    .contact .section-label { color: #a9d7cd; }
-    .contact p { color: #c5d0cc; max-width: 650px; margin-bottom: 30px; }
-    .contact .button { border-color: white; }
-    .contact .button.primary { background: white; color: var(--text); }
-
-    footer {
-      padding: 0 0 40px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    @media (max-width: 820px) {
-      .nav-links { display: none; }
-      .hero,
-      .about { grid-template-columns: 1fr; }
-      .hero { padding: 64px 0; }
-      .portrait-card { max-width: 420px; }
-      .focus-grid,
-      .project-grid { grid-template-columns: 1fr; }
-      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-      .contact { padding: 40px 28px; }
-    }
-
-    @media (max-width: 520px) {
-      .container { width: min(100% - 28px, var(--max)); }
-      h1 { font-size: 3.5rem; }
-      section { padding: 70px 0; }
-      .buttons { flex-direction: column; align-items: stretch; }
-      .button { width: 100%; }
-      footer { flex-direction: column; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tri Wahyu Prabowo",
+    "url": "https://triwahyupra.github.io/",
+    "jobTitle": "Robotics Developer",
+    "worksFor": {"@type": "Organization", "name": "LINI Foundation"},
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "Universitas Brawijaya"},
+    "knowsAbout": ["Computer Vision", "Deep Learning", "Underwater Robotics", "Marine Conservation", "Photogrammetry", "Multimodal AI"],
+    "sameAs": ["https://github.com/triwahyupra", "https://www.linkedin.com/in/triwahyupra/", "https://www.instagram.com/triwahyupra/"]
+  }
+  </script>
 </head>
-
 <body>
-  <nav>
-    <div class="container nav-inner">
-      <a class="logo" href="#">Tri Wahyu Prabowo</a>
-      <div class="nav-links">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Tri Wahyu Prabowo, back to top"><span class="brand-mark" aria-hidden="true">TW</span><span>Tri Wahyu<br><small>Prabowo</small></span></a>
+      <button class="menu-toggle" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation">☰</button>
+      <nav class="nav" id="navigation" aria-label="Main navigation">
         <a href="#about">About</a>
-        <a href="#focus">Focus</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#work">My Work</a>
+        <a href="#multimodal">What's Next</a>
+        <a href="#les">Les Village</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact" class="nav-cta">Let's connect ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO: Replace this image with your strongest original photo if desired. -->
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <div class="container hero-layout">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">AI Model Development · Underwater Robotics · Community</p>
+          <h1 id="heroTitle">Technology for the ocean. <em>Built with people in mind.</em></h1>
+          <p class="hero-desc">Hi, I'm Wahyu — a Robotics Developer in Bali, Indonesia. I build computer vision models and underwater robotic systems for marine conservation, and work alongside coastal communities to turn field needs into practical digital tools.</p>
+          <div class="hero-actions">
+            <a class="button" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+            <a class="button ghost" href="#les">My work in Les Village <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-footnote">Building models · Learning in the field · Designing for use</p>
+        </div>
+        <div class="hero-photo-wrap reveal">
+          <div class="hero-photo-frame">
+            <img src="https://triwahyupra.github.io/asssets/Wahyu%20with%20Robot.png" alt="Wahyu working with an underwater robotic system" width="800" height="880" fetchpriority="high">
+            <div class="image-caption"><span>Underwater technology / Bali</span><span>Field-driven innovation</span></div>
+          </div>
+          <div class="hero-stamp" aria-hidden="true">AI ×<br>OCEAN ×<br>PEOPLE</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- These are project scopes, NOT model accuracy or ecological outcome claims. -->
+    <div class="proof-band" aria-label="Selected scope of work">
+      <div class="container proof-grid">
+        <div class="proof"><strong>7</strong><span>Coral life-form classes<br>in a computer vision model</span></div>
+        <div class="proof"><strong>~20</strong><span>Reef fish species<br>in model development scope</span></div>
+        <div class="proof"><strong>Les</strong><span>Village, Bali<br>Community & conservation fieldwork</span></div>
       </div>
     </div>
-  </nav>
 
-  <main>
-    <section class="container hero">
-      <div>
-        <div class="eyebrow">AI × Robotics × Ocean Conservation</div>
-        <h1>Building technology for <span>healthier oceans.</span></h1>
-        <p class="hero-copy">
-          I am Tri Wahyu Prabowo, an AI and robotics professional interested in
-          applying intelligent technology to real-world marine conservation challenges.
-        </p>
-        <div class="buttons">
-          <a class="button primary" href="#projects">View My Work</a>
-          <a class="button secondary" href="#contact">Let's Connect</a>
+    <section id="about" class="section" aria-labelledby="aboutTitle">
+      <div class="container about-grid">
+        <div class="reveal">
+          <p class="section-index">01 / My perspective</p>
+          <h2 id="aboutTitle">Engineering matters when it <em>reaches the field.</em></h2>
+        </div>
+        <div class="about-main reveal">
+          <p class="lead">I believe the most useful technology begins with understanding the people, places, and problems it is meant to serve.</p>
+          <p>My background is in Electrical Engineering at Universitas Brawijaya. Over time, I moved from robotics and embedded systems into computer vision, underwater data collection, and marine conservation technology.</p>
+          <p>At LINI Foundation, I work on robotic systems and AI models that support coral reef monitoring. My work in Les Village also brings me into regular contact with local conservation practitioners, and with children learning English through community classes. Those experiences keep me thinking beyond what a model can predict — toward what people can actually use.</p>
+          <div class="field-loop" aria-label="My approach"><span>Listen</span><b>→</b><span>Collect data</span><b>→</b><span>Build & test</span><b>→</b><span>Learn with users</span></div>
         </div>
       </div>
-
-      <div class="portrait-card">
-        <img src="asssets/Wahyu with Robot.png" alt="Tri Wahyu Prabowo working with an underwater robot" class="portrait-image">
-      </div>
     </section>
 
-    <section id="about" class="container about">
-      <div>
-        <div class="section-label">01 — About</div>
-        <h2 class="section-title">Technology with a purpose.</h2>
-      </div>
-
-      <div class="about-text">
-        <p>
-          My work sits at the intersection of artificial intelligence, robotics,
-          and marine conservation. I enjoy turning complex environmental problems
-          into practical technology solutions.
-        </p>
-        <p>
-          My experience includes computer vision, underwater robotics, 3D mapping,
-          sensor integration, and AI-assisted monitoring of marine ecosystems.
-        </p>
-        <p>
-          I am particularly interested in building systems that help researchers
-          and conservation practitioners understand, monitor, and restore our oceans.
-        </p>
-      </div>
-    </section>
-
-    <section id="focus" class="container">
-      <div class="section-label">02 — What I Do</div>
-      <h2 class="section-title">Where technology meets the ocean.</h2>
-
-      <div class="focus-grid">
-        <article class="card">
-          <div class="card-number">01</div>
-          <h3>Artificial Intelligence</h3>
-          <p>Computer vision, machine learning, object detection, segmentation, and model evaluation.</p>
-        </article>
-
-        <article class="card">
-          <div class="card-number">02</div>
-          <h3>Robotics</h3>
-          <p>ROV systems, sensor integration, ROS, underwater mapping, and intelligent robotic platforms.</p>
-        </article>
-
-        <article class="card">
-          <div class="card-number">03</div>
-          <h3>Marine Conservation</h3>
-          <p>Technology for coral reef monitoring, seagrass restoration, biodiversity, and ocean research.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- SELECTED PROJECTS SECTION (UPDATED WITH 2 GIFs EACH) -->
-    <section id="projects" class="container">
-      <div class="section-label">03 — Selected Projects</div>
-      <h2 class="section-title">A few things I've worked on.</h2>
-
-      <div class="project-grid">
-        <!-- Project 1: Underwater Reef Monitoring -->
-        <article class="card project-card">
-          <div class="project-media">
-            <!-- Replace these src with your actual GIF paths -->
-            <img
-              class="project-gif gif-default"
-              src="asssets/CoralDetection.gif"
-              alt="Underwater reef monitoring demo"
-              loading="lazy"
-            />
-            <img
-              class="project-gif gif-hover"
-              src="asssets/ReefFishDetection.gif"
-              alt="Underwater reef monitoring demo (hover)"
-              loading="lazy"
-              aria-hidden="true"
-            />
+    <section id="expertise" class="section soft" aria-labelledby="expertiseTitle">
+      <div class="container">
+        <p class="section-index">02 / What I build</p>
+        <div class="section-heading">
+          <h2 id="expertiseTitle">AI development is more than <em>calling a model.</em></h2>
+          <p>I enjoy the full technical process — from preparing field data to training, evaluating, and connecting models to real-world workflows.</p>
+        </div>
+        <div class="expertise-grid">
+          <article class="expertise-card reveal">
+            <span class="card-no">01 / Intelligence</span><span class="card-symbol" aria-hidden="true">◎</span>
+            <h3>AI Model Building</h3>
+            <p>Computer vision and deep learning for detecting, classifying, and interpreting marine imagery.</p>
+            <div class="tags"><span class="tag light">Python</span><span class="tag light">PyTorch</span><span class="tag light">YOLOv8</span><span class="tag light">OpenCV</span></div>
+          </article>
+          <article class="expertise-card reveal">
+            <span class="card-no">02 / Engineering</span><span class="card-symbol" aria-hidden="true">⌁</span>
+            <h3>Underwater Robotics</h3>
+            <p>ROV development, sensors, embedded computing, navigation, and underwater image acquisition.</p>
+            <div class="tags"><span class="tag light">ROS</span><span class="tag light">ROV</span><span class="tag light">EKF</span><span class="tag light">Sensor Fusion</span></div>
+          </article>
+          <article class="expertise-card reveal">
+            <span class="card-no">03 / Application</span><span class="card-symbol" aria-hidden="true">✳</span>
+            <h3>Marine Technology</h3>
+            <p>Field-informed tools for reef monitoring, fish biodiversity, seagrass experiments, and 3D reconstruction.</p>
+            <div class="tags"><span class="tag light">Photogrammetry</span><span class="tag light">Metashape</span><span class="tag light">Fieldwork</span></div>
+          </article>
+        </div>
+        <div class="ai-workflow reveal">
+          <div class="ai-workflow-header">
+            <div><span class="kicker" style="color:var(--teal)">Inside my AI workflow</span><h3>From underwater pixels to usable information</h3></div>
+            <p>What I want collaborators to see: I work on the steps that make computer vision useful, not just the final prediction screen.</p>
           </div>
-
-          <div class="project-content">
-            <div class="project-tag">Computer Vision × Marine Life</div>
-            <h3>Underwater Reef Monitoring</h3>
-            <p>
-              AI-assisted analysis of underwater imagery to support coral reef
-              monitoring and ecological assessment.
-            </p>
+          <div class="workflow-grid">
+            <div class="step"><b>01</b><strong>Collect & curate</strong><p>Underwater photos, video frames, and monitoring context.</p></div>
+            <div class="step"><b>02</b><strong>Label & prepare</strong><p>Annotation, class definitions, dataset review, and preprocessing.</p></div>
+            <div class="step"><b>03</b><strong>Train & fine-tune</strong><p>Model selection, training experiments, and iteration.</p></div>
+            <div class="step"><b>04</b><strong>Evaluate critically</strong><p>Inspect predictions, errors, and class-level performance.</p></div>
+            <div class="step"><b>05</b><strong>Design for use</strong><p>Think through field workflows, interfaces, and model limitations.</p></div>
           </div>
-
-          <a class="project-link" href="#" onclick="return false;">Project details →</a>
-        </article>
-
-        <!-- Project 2: ROV for Reef Mapping -->
-        <article class="card project-card">
-          <div class="project-media">
-            <!-- Replace these src with your actual GIF paths -->
-            <img
-              class="project-gif gif-default"
-              src="asssets/AbzuHovering.gif"
-              alt="ROV for reef mapping demo"
-              loading="lazy"
-            />
-            <img
-              class="project-gif gif-hover"
-              src="asssets/3DReef.gif"
-              alt="ROV for reef mapping demo (hover)"
-              loading="lazy"
-              aria-hidden="true"
-            />
-          </div>
-
-          <div class="project-content">
-            <div class="project-tag">Robotics × 3D Mapping</div>
-            <h3>ROV for Reef Mapping</h3>
-            <p>
-              An underwater robotic platform exploring computer vision,
-              sensor fusion, 3D mapping, and marine field applications.
-            </p>
-          </div>
-
-          <a class="project-link" href="#" onclick="return false;">Project details →</a>
-        </article>
-
-        <!-- Project 3: Seagrass Restoration -->
-        <article class="card project-card">
-          <div class="project-media">
-            <!-- Replace these src with your actual GIF paths -->
-            <img
-              class="project-gif gif-default"
-              src="asssets/Seagrass planting.gif"
-              alt="Seagrass restoration workflow demo"
-              loading="lazy"
-            />
-            <img
-              class="project-gif gif-hover"
-              src="asssets/seagrass planter.gif"
-              alt="Seagrass restoration workflow demo (hover)"
-              loading="lazy"
-              aria-hidden="true"
-            />
-          </div>
-
-          <div class="project-content">
-            <div class="project-tag">Robotics x Restoration</div>
-            <h3>Seagrass Restoration</h3>
-            <p>
-              Technology-supported experimentation for seagrass nursery,
-              restoration, and monitoring workflows.
-            </p>
-          </div>
-
-          <a class="project-link" href="#" onclick="return false;">Project details →</a>
-        </article>
-      </div>
-    </section>
-    <!-- END SELECTED PROJECTS SECTION -->
-
-    <section class="container">
-      <div class="section-label">04 — Skills</div>
-      <h2 class="section-title">Tools I work with.</h2>
-
-      <div class="skills">
-        <span class="skill">Python</span>
-        <span class="skill">PyTorch</span>
-        <span class="skill">OpenCV</span>
-        <span class="skill">YOLO</span>
-        <span class="skill">ROS</span>
-        <span class="skill">Computer Vision</span>
-        <span class="skill">Machine Learning</span>
-        <span class="skill">Robotics</span>
-        <span class="skill">3D Mapping</span>
-        <span class="skill">Sensor Fusion</span>
-        <span class="skill">Marine Conservation</span>
-      </div>
-    </section>
-
-    <section id="contact" class="container">
-      <div class="contact">
-        <div class="section-label">05 — Contact</div>
-        <h2 class="section-title">Let's build something meaningful.</h2>
-        <p>
-          Interested in AI, robotics, marine technology, or collaboration?
-          I'd be happy to connect.
-        </p>
-        <div class="buttons">
-          <a class="button primary"   href="mailto:triwahyuprab@gmail.com">Email Me</a>
-          <a class="button secondary" href="https://www.linkedin.com/in/triwahyupra/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="button secondary" href="https://github.com/triwahyupra" target="_blank" rel="noopener">GitHub</a>
-          <a class="button secondary" href="https://www.instagram.com/triwahyupra/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
+    </section>
 
-      <footer>
-        <span>© 2026 Tri Wahyu Prabowo</span>
-        <span>AI × Robotics × Ocean Conservation</span>
-      </footer>
+    <section id="work" class="section" aria-labelledby="projectsTitle">
+      <div class="container">
+        <p class="section-index">03 / Selected work</p>
+        <div class="section-heading">
+          <h2 id="projectsTitle">Projects with a <em>real-world purpose.</em></h2>
+          <p>Research and development work combining AI, underwater systems, and conservation. Select a project to explore the approach.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-photo"><img src="https://triwahyupra.github.io/asssets/CoralDetection.gif" alt="Demonstration of coral reef detection on underwater imagery" loading="lazy" width="640" height="520"><span class="photo-id">01 / AI</span></div>
+            <div class="project-body">
+              <div><span class="kicker">Computer vision · Ongoing development</span><h3>AI for Coral & Reef Fish Monitoring</h3><p>Building YOLO-based models for coral life-form classification and reef fish recognition, with a focus on useful outputs for ecological monitoring.</p></div>
+              <div class="tags"><span class="tag">YOLOv8</span><span class="tag">Python</span><span class="tag">Dataset development</span></div>
+              <a class="project-link" href="#case-ai">Read technical case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-photo"><img src="https://triwahyupra.github.io/asssets/AbzuHovering.gif" alt="Underwater robot hovering during a field test" loading="lazy" width="640" height="520"><span class="photo-id">02 / ROBOTICS</span></div>
+            <div class="project-body">
+              <div><span class="kicker">Robotics · Field testing</span><h3>Underwater ROV & 3D Reef Mapping</h3><p>Integrating underwater robotic hardware, sensors, and image capture workflows for photogrammetry and reef documentation.</p></div>
+              <div class="tags"><span class="tag">ROS</span><span class="tag">Sensor integration</span><span class="tag">3D mapping</span></div>
+              <a class="project-link" href="#case-rov">Read technical case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-photo"><img src="https://triwahyupra.github.io/asssets/Seagrass%20planting.gif" alt="Experimental underwater robotic workflow for planting seagrass" loading="lazy" width="640" height="520"><span class="photo-id">03 / RESTORATION</span></div>
+            <div class="project-body">
+              <div><span class="kicker">Exploration · Early-stage pilot</span><h3>Robot-Assisted Seagrass Planting</h3><p>Exploring whether underwater robots can help with seagrass planting tasks through an early-stage experimental pilot.</p></div>
+              <div class="tags"><span class="tag">Experimental robotics</span><span class="tag">Seagrass</span><span class="tag">Field pilot</span></div>
+              <a class="project-link" href="#case-seagrass">Read pilot case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="case-studies" aria-label="Project case studies">
+          <h3>Behind the projects</h3>
+          <details class="case" id="case-ai">
+            <summary><span><strong>AI for Coral & Reef Fish Monitoring</strong><small>Model development / Current work</small></span><span class="case-plus" aria-hidden="true">+</span></summary>
+            <div class="case-content">
+              <div><h4>Problem</h4><p>Underwater imagery contains rich information, but manually identifying coral forms and reef fish in large collections takes time and specialized knowledge.</p></div>
+              <div><h4>My technical work</h4><p>Developing and iterating YOLOv8-based computer vision workflows, with seven coral life-form classes and roughly 20 reef fish species in the broader model development scope.</p></div>
+              <div><h4>Where it could go</h4><p>Model-assisted reviewing, data summaries, and accessible interfaces that support — rather than replace — ecological experts and community monitoring.</p></div>
+              <div class="case-bottom">Current status: model development and experimentation. Validation results and a public demonstration should be added only when you have figures and media you can share.</div>
+            </div>
+          </details>
+          <details class="case" id="case-rov">
+            <summary><span><strong>Underwater ROV & 3D Reef Mapping</strong><small>Robotics / Image acquisition</small></span><span class="case-plus" aria-hidden="true">+</span></summary>
+            <div class="case-content">
+              <div><h4>Problem</h4><p>Repeatedly documenting underwater sites requires reliable data collection in conditions that are less predictable than a laboratory or pool.</p></div>
+              <div><h4>My technical work</h4><p>Working with robotic platforms, ROS, sensor integration, camera systems, navigation experiments, and photogrammetric reconstruction of reef scenes.</p></div>
+              <div><h4>Field application</h4><p>Using underwater images and mapped environments to support documentation and comparison of marine restoration and monitoring sites.</p></div>
+              <div class="case-bottom">Team project at LINI Foundation. Add annotated architecture diagrams, 3D model previews, and specific responsibilities when ready to publish.</div>
+            </div>
+          </details>
+          <details class="case" id="case-seagrass">
+            <summary><span><strong>Robot-Assisted Seagrass Planting</strong><small>Exploration / Restoration pilot</small></span><span class="case-plus" aria-hidden="true">+</span></summary>
+            <div class="case-content">
+              <div><h4>Problem</h4><p>Seagrass restoration can require labor-intensive underwater work, motivating experiments with different approaches to planting and monitoring.</p></div>
+              <div><h4>Experiment</h4><p>An early-stage pilot explored technology-assisted planting using <em>Thalassia hemprichii</em>, including a trial involving 80 shoots in April 2024.</p></div>
+              <div><h4>What it means</h4><p>An exploratory engineering effort — not evidence of proven long-term restoration success. It helped identify practical constraints and potential applications.</p></div>
+              <div class="case-bottom">Pilot status: experimental. The main current robotics focus remains coral reef monitoring and documentation.</div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="multimodal" class="section multimodal" aria-labelledby="multiTitle">
+      <div class="container multi-layout">
+        <div class="reveal">
+          <p class="section-index">04 / Where I want to grow</p>
+          <span class="future-label">Learning & research direction — not a deployed system</span>
+          <h2 id="multiTitle">Beyond one data type: <em>multimodal AI.</em></h2>
+          <p class="intro lead">One underwater image tells a story. Combining multiple types of environmental data could help us understand a much bigger picture.</p>
+          <p class="intro">I want to learn how models can connect visual observations with mapping, underwater sound, and other ecological evidence. I'm especially interested in designing systems that turn those different signals into understandable insights for researchers and local monitoring teams.</p>
+          <div class="multi-inputs" aria-label="Potential multimodal data types">
+            <div class="multi-item"><span aria-hidden="true">▧</span><strong>Images & video</strong><small>Coral forms, fish, and visual changes</small></div>
+            <div class="multi-item"><span aria-hidden="true">⌁</span><strong>Bioacoustics</strong><small>Potential underwater sound signals</small></div>
+            <div class="multi-item"><span aria-hidden="true">▦</span><strong>3D & spatial data</strong><small>Reef structure and location context</small></div>
+            <div class="multi-item"><span aria-hidden="true">◎</span><strong>Environmental data</strong><small>Sensor readings and possible eDNA evidence</small></div>
+          </div>
+        </div>
+        <div class="multi-diagram reveal" aria-label="Conceptual multimodal monitoring workflow">
+          <span class="diagram-caption">Conceptual future workflow</span>
+          <div class="diagram-source"><span>Underwater images</span><span>Acoustic records</span><span>Maps & sensors</span></div>
+          <div class="diagram-line" aria-hidden="true"></div>
+          <div class="diagram-model">Multimodal AI <small>Research & integration direction</small></div>
+          <div class="diagram-line" aria-hidden="true"></div>
+          <div class="diagram-output">Clearer monitoring insights<br><strong>for people doing conservation work</strong></div>
+          <p class="disclaimer">This is a vision for future development, not a claim that these data sources are currently integrated into one working AI system.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="les" class="section" aria-labelledby="lesTitle">
+      <div class="container les-grid">
+        <div class="les-copy reveal">
+          <p class="section-index">05 / People & place</p>
+          <h2 id="lesTitle">Learning from <em>Les Village.</em></h2>
+          <p class="lead">Some of the most valuable lessons I've learned about technology come from spending time with people doing conservation on the ground.</p>
+          <p>In Les Village, North Bali, I join ongoing reef-monitoring activities and learn alongside local practitioners. I also take part in English learning activities for children from the community. These experiences help me see conservation as both an environmental and a human challenge.</p>
+          <p>I'm interested in building digital tools that are not just technically impressive, but understandable, affordable, and useful within the context of a local community. That means listening first, validating assumptions, and making room for community feedback.</p>
+          <a class="inline-link" href="#community-tools">See the kind of community tools I want to build ↗</a>
+        </div>
+        <div class="les-card reveal">
+          <div>
+            <span class="map-kicker">Buleleng · North Bali · Indonesia</span>
+            <h3>Les Village.<br><em>Beyond the lab.</em></h3>
+            <p class="map-subtitle">Where reef monitoring, local knowledge, education, and engineering meet.</p>
+          </div>
+          <div class="les-activities">
+            <div class="activity"><span class="number">01</span><div><strong>Reef monitoring in the field</strong><span>Joining regular monitoring activities and learning from local practitioners.</span></div></div>
+            <div class="activity"><span class="number">02</span><div><strong>English learning with local children</strong><span>Supporting community learning through online and in-person classes.</span></div></div>
+            <div class="activity"><span class="number">03</span><div><strong>Designing with context</strong><span>Letting real field needs inform the next generation of digital conservation tools.</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="container"><div class="community-principle reveal"><strong>My guiding principle:</strong> community engagement isn't a side project to my engineering work. It helps me ask better questions about which technology is worth building, how it should be used, and who benefits from it.</div></div>
+    </section>
+
+    <section id="community-tools" class="section soft" aria-labelledby="toolsTitle">
+      <div class="container tool-grid">
+        <div class="reveal">
+          <p class="section-index">06 / A tool I want to build</p>
+          <span class="status planned">Concept / Not yet launched</span>
+          <h2 id="toolsTitle" style="margin-top:16px">AI tools should be <em>usable outside the lab.</em></h2>
+          <p class="lead">Imagine a simple monitoring workspace where local teams can upload reef photos, review model suggestions, and track observations over time.</p>
+          <p class="muted">This is an early product direction, not an already functioning platform. The next step would be to talk with community users, define the smallest useful workflow, and validate both the interface and the underlying models.</p>
+          <div class="tool-notes">
+            <div class="tool-note"><strong>Make data collection easier</strong><p>Simple uploads, clear location and date records, and low-friction interfaces.</p></div>
+            <div class="tool-note"><strong>Keep people in the loop</strong><p>AI predictions are suggestions that reviewers can inspect and correct.</p></div>
+            <div class="tool-note"><strong>Return useful information</strong><p>Understandable summaries, exportable records, and design for limited connectivity.</p></div>
+          </div>
+        </div>
+        <!-- Concept illustration built with CSS. NOT a live product or working upload form. -->
+        <div class="mockup reveal" role="img" aria-label="Static concept mockup of a community reef monitoring dashboard, not a working app">
+          <div class="mockup-bar"><strong>REEF NOTES / COMMUNITY MONITORING</strong><span class="mockup-dots" aria-hidden="true">● ● ●</span></div>
+          <div class="mockup-body">
+            <div class="mockup-heading"><strong>Monitoring workspace</strong><span>CONCEPT ONLY</span></div>
+            <div class="mockup-upload"><span class="upload-icon" aria-hidden="true">⇧</span><strong>Upload underwater images</strong><small>Simple photo-based monitoring workflow</small></div>
+            <div class="mockup-table"><span>Visual observations</span><b>Human-reviewed</b></div>
+            <div class="mockup-table"><span>AI-assisted suggestions</span><b>Future feature</b></div>
+            <div class="mockup-table"><span>Location-based history</span><b>Future feature</b></div>
+            <div class="mockup-table"><span>Reports for local teams</span><b>Future feature</b></div>
+          </div>
+          <div class="mockup-foot">Illustrative design — no upload, inference, or database is running here.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="section" aria-labelledby="journeyTitle">
+      <div class="container">
+        <p class="section-index">07 / Experience & growth</p>
+        <div class="section-heading"><h2 id="journeyTitle">Learning, building, <em>and sharing.</em></h2><p>Engineering experience, practical learning, and community work all shape how I approach a challenge.</p></div>
+        <div class="journey-grid">
+          <div class="reveal">
+            <article class="timeline-item"><span class="period">2023 — present</span><div><h3>Robotics Developer</h3><p class="org">LINI Foundation</p><p>Building and testing underwater robotic systems, computer vision models, and workflows for marine conservation fieldwork.</p></div></article>
+            <article class="timeline-item"><span class="period">2026 — 2027</span><div><h3>Chapter Leader</h3><p class="org">RevoU Bali</p><p>Helping convene a digital learning community and connect people through practical learning and events.</p></div></article>
+            <article class="timeline-item"><span class="period">2023 — 2024</span><div><h3>Computer Vision Bootcamp</h3><p class="org">IndonesiaAI</p><p>Studied and built projects involving object detection, deep learning, and image segmentation.</p></div></article>
+            <article class="timeline-item"><span class="period">2014 — 2022</span><div><h3>Electrical Engineering</h3><p class="org">Universitas Brawijaya</p><p>Built foundations through power electronics, robotics competitions, laboratory assistance, and team leadership.</p></div></article>
+          </div>
+          <aside class="recognition reveal" aria-label="Selected activities and recognition">
+            <span class="kicker">Selected milestones</span>
+            <div class="recognition-item"><strong>International Seagrass Symposium 2025</strong><span>Speaker · Technology and seagrass restoration</span></div>
+            <div class="recognition-item"><strong>IndonesiaAI Computer Vision Bootcamp</strong><span>Top 3 · Final score 91.6/100</span></div>
+            <div class="recognition-item"><strong>BCP WaveMakers YTTP 2026</strong><span>Selected participant · Youth learning and collaboration</span></div>
+            <div class="recognition-item"><strong>University Robotics Competition</strong><span>Regional 1st place · National 4th place</span></div>
+            <div class="recognition-item"><strong>Ocean and Engine Webinar 2026</strong><span>Sharing technology perspectives for marine conservation</span></div>
+            <div class="recognition-item"><strong>Community English Classes — Les Village</strong><span>Continuing education and community engagement</span></div>
+          </aside>
+        </div>
+      </div>
     </section>
   </main>
+
+  <footer id="contact" class="contact" aria-labelledby="contactTitle">
+    <div class="container">
+      <p class="section-index">08 / Connect</p>
+      <h2 id="contactTitle">Let's build something <em>meaningful together.</em></h2>
+      <p class="contact-desc">I'm interested in conversations and collaborations around AI model development, underwater robotics, multimodal learning, marine conservation, and technology that helps coastal communities. Feel free to reach out.</p>
+      <!-- Confirm this address before publishing: it matches the currently published site. -->
+      <div class="contact-actions"><a class="button" href="mailto:triwahyuprab@gmail.com?subject=Collaboration%20inquiry">Email me <span aria-hidden="true">↗</span></a><a class="button ghost" href="https://www.linkedin.com/in/triwahyupra/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
+      <div class="footer">
+        <p>© <span id="year">2026</span> Tri Wahyu Prabowo<br>AI, robotics, marine conservation & community.</p>
+        <div class="footer-links"><a href="mailto:triwahyuprab@gmail.com">Email</a><a href="https://github.com/triwahyupra" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/triwahyupra/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/triwahyupra/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="#top">Back to top ↑</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Small progressive enhancements; page content works without JavaScript.
+    document.documentElement.classList.add('js');
+    const menuButton = document.getElementById('menuButton');
+    const navigation = document.getElementById('navigation');
+    function setMenu(open) {
+      navigation.classList.toggle('open', open);
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      menuButton.textContent = open ? '×' : '☰';
+    }
+    menuButton.addEventListener('click', () => setMenu(!navigation.classList.contains('open')));
+    navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
+    document.addEventListener('click', event => {
+      if (!navigation.contains(event.target) && !menuButton.contains(event.target)) setMenu(false);
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Opening the case-study accordions on direct project-card/hash navigation.
+    function openHashCase() {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (target && target.matches('details.case')) target.open = true;
+    }
+    window.addEventListener('hashchange', openHashCase);
+    openHashCase();
+
+    // Reveal-on-scroll enhancement; no effect for reduced-motion users.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealItems = document.querySelectorAll('.reveal');
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      revealItems.forEach(element => element.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .08, rootMargin: '0px 0px 45px 0px' });
+      revealItems.forEach(element => observer.observe(element));
+    }
+  </script>
 </body>
 </html>
